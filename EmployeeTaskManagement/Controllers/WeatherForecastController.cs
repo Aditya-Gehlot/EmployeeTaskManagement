@@ -1,4 +1,7 @@
+using EmployeeTaskManagement.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using ServiceEmployeeTask.Interfaces;
 
 namespace EmployeeTaskManagement.Controllers
 {
@@ -12,10 +15,29 @@ namespace EmployeeTaskManagement.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly IAccountService _accountService;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IAccountService account)
         {
             _logger = logger;
+            _accountService = account;
+        }
+
+        [Authorize]
+        [HttpPost]
+        [Route("AddNewBrand")]
+        public IActionResult Login(LoginModel loginModel)
+        {
+            try
+            {
+
+                //_accountService.Login(loginModel);
+                return Ok("Brand Added Successfully");
+            }
+            catch (Exception)
+            {
+                return BadRequest("Brand Already Exist.");
+            }
         }
 
         //[HttpGet(Name = "GetWeatherForecast")]
