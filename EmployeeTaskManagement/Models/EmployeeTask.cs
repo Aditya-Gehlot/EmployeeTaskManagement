@@ -24,6 +24,6 @@ namespace EmployeeTaskManagement.Models
 
         public DateTime CreatedDate { get; set; }
 
-        public DateTime DueDate { get; set; }
+        public DateTime? DueDate { get; set; }
     }
 }
