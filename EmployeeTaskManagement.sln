@@ -3,15 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeTaskManagement", "EmployeeTaskManagement\EmployeeTaskManagement.csproj", "{2E705534-73FC-4DCF-A31C-0D927A59A34A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeTaskManagement", "EmployeeTaskManagement\EmployeeTaskManagement.csproj", "{2E705534-73FC-4DCF-A31C-0D927A59A34A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepoEmployeeTask", "RepoEmployeeTask\RepoEmployeeTask.csproj", "{932CD2B4-94BB-4798-8FE3-25E5E721C78C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepoEmployeeTask", "RepoEmployeeTask\RepoEmployeeTask.csproj", "{932CD2B4-94BB-4798-8FE3-25E5E721C78C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceEmployeeTask", "ServiceEmployeeTask\ServiceEmployeeTask.csproj", "{9C8E65E9-C4DE-4E44-9395-1FEB30DDF121}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceEmployeeTask", "ServiceEmployeeTask\ServiceEmployeeTask.csproj", "{9C8E65E9-C4DE-4E44-9395-1FEB30DDF121}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DALEmployeeTask", "DALEmployeeTask\DALEmployeeTask.csproj", "{A922880A-2E92-45F8-B468-7FD8BD2D0415}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{A6706C4C-B780-4162-B592-6365AFFC2913}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{A6706C4C-B780-4162-B592-6365AFFC2913}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,10 +29,6 @@ Global
 		{9C8E65E9-C4DE-4E44-9395-1FEB30DDF121}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C8E65E9-C4DE-4E44-9395-1FEB30DDF121}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C8E65E9-C4DE-4E44-9395-1FEB30DDF121}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A922880A-2E92-45F8-B468-7FD8BD2D0415}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A922880A-2E92-45F8-B468-7FD8BD2D0415}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A922880A-2E92-45F8-B468-7FD8BD2D0415}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A922880A-2E92-45F8-B468-7FD8BD2D0415}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A6706C4C-B780-4162-B592-6365AFFC2913}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A6706C4C-B780-4162-B592-6365AFFC2913}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6706C4C-B780-4162-B592-6365AFFC2913}.Release|Any CPU.ActiveCfg = Release|Any CPU

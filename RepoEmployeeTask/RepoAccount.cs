@@ -1,6 +1,6 @@
 ﻿namespace RepoEmployeeTask
 {
-    public class Class1
+    public class RepoAccount
     {
 
     }

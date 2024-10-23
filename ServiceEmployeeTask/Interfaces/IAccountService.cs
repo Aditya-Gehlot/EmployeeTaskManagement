@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EmployeeTaskManagement.Models;
+namespace ServiceEmployeeTask.Interfaces;
+using Microsoft.AspNetCore.Identity;
 
-namespace ServiceEmployeeTask.Interfaces
+public interface IAccountService
 {
-    public class IAccountService
-    {
-    }
+    Task<string> LoginAsync(LoginModel model);
+    Task<IdentityResult> RegisterAsync(RegisterModel model);
 }
