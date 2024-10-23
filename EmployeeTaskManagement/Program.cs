@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using ServiceEmployeeTask.Interfaces;
+using ServiceEmployeeTask.Services;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -44,7 +46,7 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-
+builder.Services.AddScoped<IAccountService, AccountService>();
 
 builder.Services.AddAuthorization();
 
