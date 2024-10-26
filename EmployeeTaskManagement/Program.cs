@@ -1,3 +1,4 @@
+using EmployeeTaskManagement;
 using EmployeeTaskManagement.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -46,7 +47,12 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-builder.Services.AddScoped<IAccountService, AccountService>();
+
+builder.Services.ConfigureCustomServices();
+//builder.Services.AddScoped<IAccountService, AccountService>();
+//builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+
+
 
 builder.Services.AddAuthorization();
 
