@@ -1,5 +1,6 @@
 ﻿using EmployeeTaskManagement.Models;
 using RepoEmployeeTask;
+using RepoEmployeeTask.Models;
 using ServiceEmployeeTask.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -12,12 +13,12 @@ namespace ServiceEmployeeTask.Services
     public class EmployeeService : IEmployeeService
     {
     
-            private readonly RepoEmployee _repoEmployee;
+        private readonly RepoEmployee _repoEmployee;
 
-            public EmployeeService(RepoEmployee repoEmployee)
-            {
-                _repoEmployee = repoEmployee;
-            }
+        public EmployeeService(RepoEmployee repoEmployee)
+        {
+            _repoEmployee = repoEmployee;
+        }
 
         public async Task<IEnumerable<Employee>> GetAllEmployeesAsync()
         {
@@ -31,11 +32,21 @@ namespace ServiceEmployeeTask.Services
             return await Task.FromResult(employee);
         }
 
-        public async Task<Employee> AddEmployeeAsync(Employee employee)
+        public async Task<Employee> AddEmployeeAsync(EmployeeCreateDto employeeDto)
         {
-            _repoEmployee.Add(employee);
-            return await Task.FromResult(employee);
+            var employee = new Employee
+            {
+                FirstName = employeeDto.FirstName,
+                LastName = employeeDto.LastName,
+                Email = employeeDto.Email,
+                Password = employeeDto.Password,
+                EmployeeRole = employeeDto.EmployeeRole,
+                EmployeeTask = null // Ensure no tasks are associated when creating the employee
+            };
+
+            return await _repoEmployee.AddAsync(employee);
         }
+
 
         public async Task<Employee> UpdateEmployeeAsync(Employee employee)
         {

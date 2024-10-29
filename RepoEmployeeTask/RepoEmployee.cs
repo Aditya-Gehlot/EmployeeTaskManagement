@@ -1,5 +1,6 @@
 ﻿using EmployeeTaskManagement.Models;
 using Microsoft.EntityFrameworkCore;
+using RepoEmployeeTask.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,11 +22,13 @@ namespace RepoEmployeeTask
 
         public Employee? GetById(int id) => _context.Employees.Include(e => e.EmployeeRole).FirstOrDefault(e => e.Id == id);
 
-        public void Add(Employee employee)
+        public async Task<Employee> AddAsync(Employee employee)
         {
-            _context.Employees.Add(employee);
-            _context.SaveChanges();
+            await _context.Employees.AddAsync(employee);
+            await _context.SaveChangesAsync();
+            return employee;
         }
+
 
         public void Update(Employee employee)
         {

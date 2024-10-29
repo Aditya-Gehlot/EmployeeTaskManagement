@@ -1,10 +1,12 @@
 ﻿using EmployeeTaskManagement.Models;
 using Microsoft.AspNetCore.Mvc;
+using RepoEmployeeTask.Models;
 using ServiceEmployeeTask.Interfaces;
-using ServiceEmployeeTask.Services;
 
 namespace EmployeeTaskManagement.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class EmployeeController : ControllerBase
     {
         private readonly IEmployeeService _IEmployeeService;
@@ -17,45 +19,85 @@ namespace EmployeeTaskManagement.Controllers
         [HttpGet("getAllEmployee")]
         public async Task<IActionResult> GetAllEmployees()
         {
-            var employees = await _IEmployeeService.GetAllEmployeesAsync();
-            return Ok(employees);
+            try
+            {
+                var employees = await _IEmployeeService.GetAllEmployeesAsync();
+                return Ok(employees);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (ex) here if you have a logging mechanism
+                return StatusCode(500, "An error occurred while retrieving employees.");
+            }
         }
 
-        [HttpGet("getEmployeeById")]
+        [HttpGet("getEmployeeById/{id}")]
         public async Task<IActionResult> GetEmployeeById(int id)
         {
-            var employee = await _IEmployeeService.GetEmployeeByIdAsync(id);
-            if (employee == null)
-                return NotFound();
+            try
+            {
+                var employee = await _IEmployeeService.GetEmployeeByIdAsync(id);
+                if (employee == null)
+                    return NotFound();
 
-            return Ok(employee);
+                return Ok(employee);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (ex) here if you have a logging mechanism
+                return StatusCode(500, "An error occurred while retrieving the employee.");
+            }
         }
 
         [HttpPost("createEmployee")]
-        public async Task<IActionResult> CreateEmployee([FromBody] Employee employee)
+        public async Task<IActionResult> CreateEmployee([FromBody] EmployeeCreateDto employee)
         {
-            var createdEmployee = await _IEmployeeService.AddEmployeeAsync(employee);
-            return CreatedAtAction(nameof(GetEmployeeById), new { id = createdEmployee.Id }, createdEmployee);
+            try
+            {
+                var createdEmployee = await _IEmployeeService.AddEmployeeAsync(employee);
+                return CreatedAtAction(nameof(GetEmployeeById), new { id = createdEmployee.Id }, createdEmployee);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (ex) here if you have a logging mechanism
+                return StatusCode(500, "An error occurred while creating the employee.");
+            }
         }
 
-        [HttpPut("updateEmployee")]
+        [HttpPut("updateEmployee/{id}")]
         public async Task<IActionResult> UpdateEmployee(int id, [FromBody] Employee employee)
         {
-            var updatedEmployee = await _IEmployeeService.UpdateEmployeeAsync(employee);
-            if (updatedEmployee == null)
-                return NotFound();
+            try
+            {
+                var updatedEmployee = await _IEmployeeService.UpdateEmployeeAsync(employee);
+                if (updatedEmployee == null)
+                    return NotFound();
 
-            return NoContent();
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (ex) here if you have a logging mechanism
+                return StatusCode(500, "An error occurred while updating the employee.");
+            }
         }
 
-        [HttpDelete("deleteEmployee")]
+        [HttpDelete("deleteEmployee/{id}")]
         public async Task<IActionResult> DeleteEmployee(int id)
         {
-            var deleted = await _IEmployeeService.DeleteEmployeeAsync(id);
-            if (!deleted)
-                return NotFound();
+            try
+            {
+                var deleted = await _IEmployeeService.DeleteEmployeeAsync(id);
+                if (!deleted)
+                    return NotFound();
 
-            return NoContent();
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (ex) here if you have a logging mechanism
+                return StatusCode(500, "An error occurred while deleting the employee.");
+            }
         }
     }
 }
